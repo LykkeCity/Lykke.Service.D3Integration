@@ -1,0 +1,18 @@
+D3IntegrationService:
+    Db:
+        LogsConnString:
+            settings-key: D3IntegrationService-LogsConnString
+            types:
+              - AzureTableStorage
+SlackNotifications:
+    AzureQueue:
+        ConnectionString:
+            settings-key: SlackNotificationsConnString
+            types:
+                - AzureTableStorage
+        QueueName:
+            settings-key: SlackQueueName
+MonitoringServiceClient:
+    MonitoringServiceUrl:
+        settings-key: MonitoringServiceUrl
+
