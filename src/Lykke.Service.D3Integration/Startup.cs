@@ -1,14 +1,11 @@
 ﻿using JetBrains.Annotations;
-using Lykke.Logs.Loggers.LykkeSlack;
 using Lykke.Sdk;
-using Lykke.Sdk.Health;
-using Lykke.Sdk.Middleware;
 using Lykke.Service.D3Integration.Settings;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
+using Lykke.Service.D3Integration.Domain.Services;
+using Lykke.Service.D3Integration.DomainServices;
 
 namespace Lykke.Service.D3Integration
 {
@@ -32,38 +29,16 @@ namespace Lykke.Service.D3Integration
                 {
                     logs.AzureTableName = "D3IntegrationLog";
                     logs.AzureTableConnectionStringResolver = settings => settings.D3IntegrationService.Db.LogsConnString;
-
-                    // TODO: You could add extended logging configuration here:
-                    /* 
-                    logs.Extended = extendedLogs =>
-                    {
-                        // For example, you could add additional slack channel like this:
-                        extendedLogs.AddAdditionalSlackChannel("D3Integration", channelOptions =>
-                        {
-                            channelOptions.MinLogLevel = LogLevel.Information;
-                        });
-                    };
-                    */
                 };
 
-                // TODO: Extend the service configuration
-                /*
                 options.Extend = (sc, settings) =>
                 {
-                    sc
-                        .AddOptions()
-                        .AddAuthentication(MyAuthOptions.AuthenticationScheme)
-                        .AddScheme<MyAuthOptions, KeyAuthHandler>(MyAuthOptions.AuthenticationScheme, null);
+                    sc.AddHttpClient<ID3LedgerService, D3LedgerService>(client =>
+                    {
+                        client.BaseAddress =
+                            new Uri(settings.CurrentValue.D3IntegrationService.D3Ledger.ServiceUrl);
+                    });
                 };
-                */
-
-                // TODO: You could add extended Swagger configuration here:
-                /*
-                options.Swagger = swagger =>
-                {
-                    swagger.IgnoreObsoleteActions();
-                };
-                */
             });
         }
 
@@ -73,19 +48,6 @@ namespace Lykke.Service.D3Integration
             app.UseLykkeConfiguration(options =>
             {
                 options.SwaggerOptions = _swaggerOptions;
-
-                // TODO: Configure additional middleware for eg authentication or maintenancemode checks
-                /*
-                options.WithMiddleware = x =>
-                {
-                    x.UseMaintenanceMode<AppSettings>(settings => new MaintenanceMode
-                    {
-                        Enabled = settings.MaintenanceMode?.Enabled ?? false,
-                        Reason = settings.MaintenanceMode?.Reason
-                    });
-                    x.UseAuthentication();
-                };
-                */
             });
         }
     }

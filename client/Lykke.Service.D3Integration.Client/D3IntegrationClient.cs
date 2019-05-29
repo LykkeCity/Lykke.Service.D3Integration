@@ -9,13 +9,13 @@ namespace Lykke.Service.D3Integration.Client
     {
         // Note: Add similar Api properties for each new service controller
 
-        /// <summary>Inerface to D3Integration Api.</summary>
-        public ID3IntegrationApi Api { get; private set; }
+        /// <summary>Interface to D3Users Api.</summary>
+        public ID3UsersApi Users { get; private set; }
 
         /// <summary>C-tor</summary>
         public D3IntegrationClient(IHttpClientGenerator httpClientGenerator)
         {
-            Api = httpClientGenerator.Generate<ID3IntegrationApi>();
+            Users = httpClientGenerator.Generate<ID3UsersApi>();
         }
     }
 }
