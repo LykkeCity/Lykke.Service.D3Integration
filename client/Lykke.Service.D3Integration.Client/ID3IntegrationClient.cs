@@ -12,7 +12,7 @@ namespace Lykke.Service.D3Integration.Client
         // NO actual methods should be placed here (these go to controller interfaces, for example - ID3IntegrationApi).
         // ONLY properties for accessing controller interfaces are allowed.
 
-        /// <summary>Application Api interface</summary>
-        ID3IntegrationApi Api { get; }
+        /// <summary>Users Api interface</summary>
+        ID3UsersApi Users { get; }
     }
 }

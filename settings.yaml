@@ -1,18 +1,31 @@
 D3IntegrationService:
-    Db:
-        LogsConnString:
-            settings-key: D3IntegrationService-LogsConnString
-            types:
-              - AzureTableStorage
+  Db:
+    LogsConnString:
+      settings-key: D3IntegrationService-LogsConnString
+      types: [ AzureTableStorage ]
+    DataConnString:
+      settings-key: D3IntegrationService-DataConnString
+      types: [ AzureTableStorage ]
+  D3Ledger:
+    ServiceUrl:
+      settings-key: D3IntegrationService-D3Ledger-ServiceUrl
+    Domain:
+      settings-key: D3IntegrationService-D3Ledger-Domain
 SlackNotifications:
-    AzureQueue:
-        ConnectionString:
-            settings-key: SlackNotificationsConnString
-            types:
-                - AzureTableStorage
-        QueueName:
-            settings-key: SlackQueueName
+  AzureQueue:
+    ConnectionString:
+      settings-key: SlackNotificationsConnString
+      types: [ AzureTableStorage ]
+    QueueName:
+      settings-key: SlackQueueName
 MonitoringServiceClient:
-    MonitoringServiceUrl:
-        settings-key: MonitoringServiceUrl
-
+  MonitoringServiceUrl:
+    settings-key: MonitoringServiceUrl
+KycServiceClient:
+  ServiceUri:
+    settings-key: KycServiceClient_ServiceUri
+  ApiKey:
+    settings-key: KycServiceClient_ApiKey
+ClientAccountServiceClient:
+  ServiceUrl:
+    settings-key: ClientAccountServiceUrl

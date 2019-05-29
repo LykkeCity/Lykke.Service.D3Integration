@@ -23,11 +23,20 @@
     <None Remove="Lykke.Service.D3Integration.Client.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Lykke.HttpClientGenerator" Version="2.2.0" />
-    <PackageReference Include="Lykke.SettingsReader" Version="4.0.1" />
-    <PackageReference Include="Refit" Version="4.6.30" />
+    <PackageReference Include="Lykke.HttpClientGenerator" Version="2.5.0" />
+    <PackageReference Include="Lykke.SettingsReader" Version="5.2.0" />
+    <PackageReference Include="Refit" Version="4.6.107" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup Label="dotnet pack instructions">
+    <Content Include="$(OutputPath)Lykke.Service.D3Integration.Contract.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib/netstandard2.0</PackagePath>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\contract\Lykke.Service.D3Integration.Contract\Lykke.Service.D3Integration.Contract.csproj" />
   </ItemGroup>
 </Project>

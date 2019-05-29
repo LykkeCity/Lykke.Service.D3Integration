@@ -1,5 +1,4 @@
 ﻿using JetBrains.Annotations;
-using Lykke.SettingsReader.Attributes;
 
 namespace Lykke.Service.D3Integration.Settings
 {
@@ -7,5 +6,6 @@ namespace Lykke.Service.D3Integration.Settings
     public class D3IntegrationSettings
     {
         public DbSettings Db { get; set; }
+        public D3LedgerSettings D3Ledger { get; set; }
     }
 }
