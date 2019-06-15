@@ -23,9 +23,9 @@ MonitoringServiceClient:
     settings-key: MonitoringServiceUrl
 KycServiceClient:
   ServiceUri:
-    settings-key: KycServiceClient_ServiceUri
+    settings-key: KycServiceUrl
   ApiKey:
-    settings-key: KycServiceClient_ApiKey
+    settings-key: KycApiKey
 ClientAccountServiceClient:
   ServiceUrl:
     settings-key: ClientAccountServiceUrl
